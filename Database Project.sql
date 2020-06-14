@@ -154,13 +154,13 @@ ORDER BY occur.numOfJobs DESC
 --The employers who did not announce any job last month
 SELECT employer_name FROM employer WHERE NOT EXISTS (
 SELECT vacancy.employerID FROM vacancy 
-WHERE vacancy.employerID = employer.id and created_at > '2020/1/1'
+WHERE vacancy.employerID = employer.id and created_at > '2020/1/1' and created_at < '2020/6/1'
 )
 ------------------------------------------------
 --Query5
 --The available positions set by each employer last month
 SELECT DISTINCT employer_name , vacancy_name FROM employer , vacancy 
-WHERE is_vacancy_hidden = 0 and vacancy.employerID = employer.id and created_at > '2020/1/1'
+WHERE is_vacancy_hidden = 0 and vacancy.employerID = employer.id and created_at > '2020/1/1' and created_at < '2020/6/1'
 ------------------------------------------------
 --Query6
 --Retrieving all seekers info and the number of jobs he/she applied for
